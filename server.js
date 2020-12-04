@@ -25,7 +25,7 @@ app.use(cors());
 var corsOptions = {
   origin: 'https://whatsapp-mern-byshagun.web.app',
   methods: "GET,HEAD,PUT,PATCH,POST",
-  optionsSuccessStatus: 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  optionsSuccessStatus: 201// some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
 app.use((req,res,next),()=>{
