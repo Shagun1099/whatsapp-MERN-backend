@@ -8,7 +8,7 @@ import cors from 'cors';
 
 const app= express();
 const port=process.env.PORT||3000;
-const connection_url="mongodb+srv://shagun1099:Sh@gun1099@cluster1.v6gva.mongodb.net/whatsappdb?retryWrites=true&w=majority";
+const connection_url=process.env.databaseURL;
 
 const pusher = new Pusher({
   appId: "1112898",
