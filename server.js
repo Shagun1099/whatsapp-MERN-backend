@@ -22,11 +22,6 @@ const pusher = new Pusher({
 app.use(express.json());
 
 app.use(cors());
-var corsOptions = {
-  origin: 'https://whatsapp-mern-byshagun.web.app',
-  methods: "GET,HEAD,PUT,PATCH,POST",
-  optionsSuccessStatus: 201// some legacy browsers (IE11, various SmartTVs) choke on 204
-}
 
 const settingHeaders=function(req,res,next){
   res.setHeader('Access-Control-Allow-Origin','*');
@@ -68,7 +63,7 @@ db.once("open",() =>{
 
 app.get("/",(req,res)=>res.status(200).send("welcome to my whstapp backend"));
 
-app.get("/messages/sync",cors(corsOptions),(req,res)=>{
+app.get("/messages/sync",(req,res)=>{
 	Messages.find((err,data)=>{
 		if(err){
 			res.status(500).send(err);
@@ -78,7 +73,7 @@ app.get("/messages/sync",cors(corsOptions),(req,res)=>{
 	});
 });
 
-app.post("/messages/new",cors(corsOptions),(req,res)=>{
+app.post("/messages/new",(req,res)=>{
 	const dbMessage=req.body;
 	
 	Messages.create(dbMessage,(err,data)=>{
