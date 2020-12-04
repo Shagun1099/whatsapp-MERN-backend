@@ -28,11 +28,13 @@ var corsOptions = {
   optionsSuccessStatus: 201// some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-app.use((req,res,next),()=>{
-	res.setHeader('Access-Control-Allow-Origin','*');
-	res.setHeader('Access-Control-Allow-Headers','*');
-	next();
-   }); 
+const settingHeaders=function(req,res,next){
+  res.setHeader('Access-Control-Allow-Origin','*');
+  res.setHeader('Access-Control-Allow-Headers','*');
+  next();	
+}
+
+app.use(settingHeaders);
 
 mongoose.connect(connection_url,{
 	useCreateIndex:true,
